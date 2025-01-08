@@ -8,5 +8,12 @@ const userSchema = mongoose.Schema({
   password: String,
 });
 
+const bankSchema = mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  balance: Number,
+});
+
 const usermodel = mongoose.model("User", userSchema);
-module.exports = { usermodel };
+const account = mongoose.model("Account", bankSchema);
+
+module.exports = { usermodel, account };
